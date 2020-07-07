@@ -29,11 +29,6 @@ const withServer =
       await server.close();
     });
 
-//https://github.com/denoland/deno/issues/4735
-const handleResponse = async (response: Response) => {
-  await response.arrayBuffer();
-};
-
 test(
   "Get returns something",
   withServer({ status: 200 }, async (url) => {
@@ -42,8 +37,6 @@ test(
     assertNotEquals(returned, null);
     assertNotEquals(returned, undefined);
     assertNotEquals(returned, []);
-
-    await handleResponse(returned[2]);
   }),
 );
 
