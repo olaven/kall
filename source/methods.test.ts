@@ -1,36 +1,71 @@
-import { assertNotEquals, encode, serve } from "../deps.ts";
+import { assertEquals, assertNotEquals, encode, serve } from "../deps.ts";
 import { get, post, put, patch, del } from "./methods.ts";
 
 const { test } = Deno;
 
-const listenTo = async (server: any) => {
+const listenTo = async (mockOptions: MockOptions, server: any) => {
   for await (const req of server) {
-    req.respond({ body: "Hello World\n" });
+    req.respond(mockOptions);
   }
 };
 
-const withServer = ((action: (url: string) => any) =>
-  async () => {
-    const port = Math.floor(Math.random() * 9000) + 1;
-    const url = `http://localhost:${port}/`;
+type MockOptions = {
+  status: number | undefined;
+  headers?: Headers;
+  body?: any;
+};
 
-    const server = serve({ port });
+const withServer =
+  ((mockOptions: MockOptions, action: (url: string) => any) =>
+    async () => {
+      const port = Math.floor(Math.random() * 9000) + 1;
+      const url = `http://localhost:${port}/`;
 
-    listenTo(server);
+      const server = serve({ port });
 
-    await action(url);
-    await server.close();
-  });
+      listenTo(mockOptions, server);
+
+      await action(url);
+      await server.close();
+    });
+
+//https://github.com/denoland/deno/issues/4735
+const handleResponse = async (response: Response) => {
+  await response.arrayBuffer();
+};
 
 test(
   "Get returns something",
-  withServer(async (url) => {
+  withServer({ status: 200 }, async (url) => {
     const returned = await get(url);
 
     assertNotEquals(returned, null);
     assertNotEquals(returned, undefined);
     assertNotEquals(returned, []);
 
-    await returned[2].arrayBuffer();
+    await handleResponse(returned[2]);
+  }),
+);
+
+test(
+  "Get returns correct status",
+  withServer(
+    { status: 200 },
+    async (url) => {
+      const [status] = await get(url);
+      assertEquals(status, 200);
+    },
+  ),
+);
+
+test(
+  "GET returs parsed JSON if content-type is set to application/json",
+  withServer({
+    status: 200,
+    body: JSON.stringify({ key: "value" }),
+    headers: new Headers([["Content-Type", "application/json"]]),
+  }, async (url) => {
+    const [status, body] = await get(url);
+    assertEquals(body, { key: "value" });
   }),
 );
