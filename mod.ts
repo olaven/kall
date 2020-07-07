@@ -1,4 +1,4 @@
-export { get, put, patch, del, post } from "./src/methods.ts";
+export { get, put, patch, del, post } from "./source/methods.ts";
 export {
   OK,
   CREATED,
@@ -11,4 +11,4 @@ export {
   CONFLICT,
   INTERNAL_SERVER_ERROR,
   NOT_IMPLEMENTED,
-} from "./src/codes.ts";
+} from "./source/codes.ts";
