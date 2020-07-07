@@ -1,70 +1,74 @@
-import { CREATED, OK } from "./codes";
+import { CREATED, OK } from "./codes.ts";
 
-export const del = async <T>(url: string): Promise<[number, T?]> => {
+type KallResponse<T> = Promise<[number, T | null, Response]>;
 
-    const response = await fetch(url, {
-        method: "DELETE",
-    });
+export const patch = async <T>(url: string, payload: T): KallResponse<T> => {
+  const response = await fetch(
+    url,
+    { method: "patch", body: JSON.stringify(payload) },
+  );
+  return [-1, {} as T, response];
+};
 
-    if (response.status === OK) {
+export const del = async <T>(url: string): KallResponse<T> => {
+  const response = await fetch(url, {
+    method: "DELETE",
+  });
 
-        const payload = await response.json() as T;
-        return [response.status, payload];
-    }
+  if (response.status === OK) {
+    const payload = await response.json() as T;
+    return [response.status, payload, response];
+  }
 
-    return [response.status];
-}
+  return [response.status, null, response];
+};
 
-export const put = async <T>(url: string, payload: T): Promise<[number, T?]> => {
+export const put = async <T>(
+  url: string,
+  payload: T,
+): KallResponse<T> => {
+  const response = await fetch(url, {
+    method: "put",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
 
-    const response = await fetch(url, {
-        method: "put",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-    });
+  if (response.status === OK || response.status === CREATED) {
+    const payload = await response.json();
+    return [response.status, payload as T, response];
+  }
 
-    /*
-    * NOTE: 
-    * 204 NO_CONTENT is a perfectly valid response to PUT, but does not contain a body. 
-    * 204 NO_CONTENT is handled the same way as all status codes other than 200 OK and 201 CREATED
-    */
-    if (response.status === OK || response.status === CREATED) {
+  return [response.status, null, response];
+};
 
-        const payload = await response.json();
-        return [response.status, payload as T];
-    }
+export const post = async <T>(
+  url: string,
+  payload: T,
+): KallResponse<T> => {
+  const response = await fetch(url, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
 
-    return [response.status];
-}
+  if (response.status === CREATED) {
+    const payload = await response.json();
+    return [response.status, payload as T, response];
+  }
 
-export const post = async <T>(url: string, payload: T): Promise<[number, T?]> => {
+  return [response.status, null, response];
+};
 
-    const response = await fetch(url, {
-        method: "post",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-    });
+export const get = async <T>(url: string): KallResponse<T> => {
+  const response = await fetch(url);
+  if (response.status === OK) {
+    const payload = await response.json();
+    return [response.status, payload as T, response];
+  }
 
-    if (response.status === CREATED) {
-        const payload = await response.json();
-        return [response.status, payload as T];
-    }
-
-    return [response.status]
-}
-
-export const get = async <T>(url: string): Promise<[number, T]> => {
-
-    const response = await fetch(url);
-    if (response.status === OK) {
-
-        const payload = await response.json();
-        return [response.status, payload as T];
-    }
-
-    return [response.status, {} as T];
-}
+  return [response.status, {} as T, response];
+};
