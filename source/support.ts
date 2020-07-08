@@ -1,5 +1,6 @@
 const applicationTypeIsJson = (headers: Headers) =>
-  headers.get("Content-Type") === "application/json";
+  headers.get("content-type")?.toLowerCase().includes("application/json") ||
+  headers.get("Content-Type")?.toLowerCase().includes("application/json");
 
 type Method = "GET" | "PUT" | "PATCH" | "DELETE" | "POST";
 export type KallResponse<T> = Promise<[number, T | null, Response]>;
