@@ -1,15 +1,16 @@
 import { performRequest } from "./support.ts";
 
 export const patch = async <T>(url: string, payload: T) =>
-  performRequest("PATCH", url, payload);
+  performRequest<T>("PATCH", url, payload);
 
 export const del = async <T>(url: string) =>
-  performRequest("DELETE", url, null);
+  performRequest<T>("DELETE", url, null);
 
 export const put = async <T>(url: string, payload: T) =>
-  performRequest("PUT", url, payload);
+  performRequest<T>("PUT", url, payload);
 
 export const post = async <T>(url: string, payload: T) =>
-  performRequest("DELETE", url, payload);
+  performRequest<T>("DELETE", url, payload);
 
-export const get = async (url: string) => performRequest("GET", url, null);
+export const get = async <T>(url: string) =>
+  performRequest<T>("GET", url, null);

@@ -1,4 +1,5 @@
 export { get, put, patch, del, post } from "./source/methods.ts";
+export { status, body, response } from "./source/filters.ts";
 export {
   OK,
   CREATED,
