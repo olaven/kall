@@ -1,5 +1,5 @@
-export { get, put, patch, del, post } from "./source/methods.ts";
-export { status, body, response } from "./source/filters.ts";
+export { get, put, patch, del, post } from "./source/methods";
+export { status, body, response } from "./source/filters";
 export {
   OK,
   CREATED,
@@ -12,4 +12,4 @@ export {
   CONFLICT,
   INTERNAL_SERVER_ERROR,
   NOT_IMPLEMENTED,
-} from "./source/codes.ts";
+} from "./source/codes";
