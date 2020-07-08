@@ -1,6 +1,6 @@
-import { assertEquals, assertNotEquals } from "../deps.ts";
-import { status, body, response } from "./filters.ts";
-import { KallResponse } from "./support.ts";
+import { assertEquals, assertNotEquals } from "../source/deps.ts";
+import { status, body, response } from "../source/filters.ts";
+import { KallResponse } from "../source/support.ts";
 
 const { test } = Deno;
 

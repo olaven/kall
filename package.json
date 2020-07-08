@@ -1,16 +1,16 @@
 {
   "name": "kall",
   "version": "1.0.0",
-  "main": "dist/mod.js",
-  "types": "dist/mod.d.ts",
+  "main": "dist/index.js",
+  "types": "module",
   "scripts": {
-    "prepublish": "tsc"
+    "build": "sucrase source -d ./dist/ --transforms typescript",
+    "publish": "yarn build"
   },
   "repository": "https://github.com/olaven/kall.git",
   "author": "olaven <olav@sundfoer.com>",
   "license": "MIT",
   "devDependencies": {
-    "deno_ls_plugin": "^0.1.0",
-    "typescript": "^3.9.6"
+    "sucrase": "^3.15.0"
   }
 }

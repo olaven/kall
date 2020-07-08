@@ -7,7 +7,9 @@
  * exproted in `./source/index.ts`.  
  */
 
-export {
+import * as methods from "./methods.ts";
+import { status, body, response } from "./filters.ts";
+import {
   OK,
   CREATED,
   NO_CONTENT,
@@ -19,12 +21,8 @@ export {
   CONFLICT,
   INTERNAL_SERVER_ERROR,
   NOT_IMPLEMENTED,
-  get,
-  put,
-  patch,
-  del,
-  post,
-  status,
-  body,
-  response,
-} from "./source/index.ts";
+} from "./codes.ts";
+
+export const all = {
+  ...methods,
+};
