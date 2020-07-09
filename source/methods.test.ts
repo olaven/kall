@@ -1,6 +1,6 @@
 import { assertEquals, assertNotEquals, encode, serve } from "../deps.ts";
 import { get, post, put, patch, del } from "./methods.ts";
-import { response } from "./filters.ts";
+import { filterResponse } from "./filters.ts";
 
 const { test } = Deno;
 
@@ -80,7 +80,7 @@ test(
       expectTestHeader: true,
     },
     async (url) => {
-      const r = await response(get(url, {
+      await filterResponse(get(url, {
         headers: {
           "x-test-header": "header value",
         },
