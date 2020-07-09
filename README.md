@@ -1,5 +1,5 @@
-# Kall  
-A small and intuitive wrapper around `fetch` for consuming REST+JSON-API-s.
+# Kall 🦜
+A small and intuitive wrapper around `fetch` for consuming REST+JSON-APIs.
 `Kall` is compatible with [Deno](https://deno.land). Node support is planned. 
 
 It provides functions for each HTTP Method and an easy API to read their response. 
