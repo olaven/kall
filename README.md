@@ -7,7 +7,7 @@ As well as provides handy constants for different status codes.
 
 ## Basic usage 
 ```ts
-import { get, OK } from "https://denopkg.com/olaven/kall";
+import { get, OK } from "denopkg.com/olaven/kall@v0.1.0/mod.ts";
 
 // Basic GET 
 const [status, todo] = await get("https://jsonplaceholder.typicode.com/todos/1");
@@ -19,7 +19,7 @@ console.log((status === OK) ?
 
 ```
 ```ts
-import { get, OK } from "https://denopkg.com/olaven/kall";
+import { get, OK } from "denopkg.com/olaven/kall@v0.1.0/mod.ts";
 
 // Same as previous example, but with types
 type Todo = { userId: number, id: number, title: string, completed: boolean }; //define the type the server is expected to return 
