@@ -2,8 +2,8 @@
 A small and intuitive wrapper around `fetch` for consuming REST+JSON-APIs.
 `Kall` is compatible with [Deno](https://deno.land). Node support is planned. 
 
-It provides functions for each HTTP Method and an easy API to read their response. 
-As well as provides handy constants for different status codes. 
+It provides functions for each HTTP Method and an easy API to read their response,
+as well as handy constants for different status codes. 
 
 ## Basic usage 
 ```ts
