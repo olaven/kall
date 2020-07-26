@@ -12,7 +12,4 @@ export {
   CONFLICT,
   INTERNAL_SERVER_ERROR,
   NOT_IMPLEMENTED,
-  status,
-  body,
-  response,
-} from "./source/index.ts";
+} from "./source/codes.ts";
