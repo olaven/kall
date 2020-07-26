@@ -17,4 +17,4 @@ jobs:
             with:
               deno-version: v1.x
           - name: Run test
-            run: chmod +ux test.sh && ./test.sh
+            run: chmod +x test.sh && ./test.sh
