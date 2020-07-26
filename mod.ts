@@ -4,7 +4,7 @@
  * does not work. However, `mod.ts` is the Deno convention. 
  * As a workaround, `./source/index.ts` is the Node entrypoint 
  * (`./dist/index.js` when compiled) and `mod.ts` just forwards everything 
- * exproted in `./source/index.ts`.  
+ * exported in `./source/index.ts`.  
  */
 
 export {

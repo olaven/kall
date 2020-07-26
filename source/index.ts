@@ -4,12 +4,12 @@
  * does not work. However, `mod.ts` is the Deno convention. 
  * As a workaround, `./source/index.ts` is the Node entrypoint 
  * (`./dist/index.js` when compiled) and `mod.ts` just forwards everything 
- * exproted in `./source/index.ts`.  
+ * exported in `./source/index.ts`.  
  */
 
-import * as methods from "./methods.ts";
-import { status, body, response } from "./filters.ts";
-import {
+export { get, put, patch, del, post } from "./methods.ts";
+export { status, body, response } from "./filters.ts";
+export {
   OK,
   CREATED,
   NO_CONTENT,
@@ -22,7 +22,3 @@ import {
   INTERNAL_SERVER_ERROR,
   NOT_IMPLEMENTED,
 } from "./codes.ts";
-
-export const all = {
-  ...methods,
-};

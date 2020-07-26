@@ -1,10 +1,10 @@
 {
   "name": "kall",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "module",
+  "main": "build/index.js",
+  "type": "module",
   "scripts": {
-    "build": "sucrase source -d ./dist/ --transforms typescript",
+    "build": "deno run --unstable --allow-read --allow-write build.ts",
     "publish": "yarn build"
   },
   "repository": "https://github.com/olaven/kall.git",
