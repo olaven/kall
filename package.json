@@ -1,6 +1,6 @@
 {
-  "name": "kall",
-  "version": "1.0.0",
+  "name": "node-kall",
+  "version": "1.0.1",
   "main": "build/index.js",
   "type": "module",
   "scripts": {
