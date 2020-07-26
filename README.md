@@ -1,15 +1,20 @@
 # Kall 🦜
 A small and intuitive wrapper around `fetch` for consuming REST+JSON-APIs.
-`kall` is compatible with [Deno](https://deno.land). Node support is planned. 
+`Kall` is compatible with [Deno](https://deno.land) and [Node](nodejs.org). 
 
 It provides functions for each HTTP Method and an easy API to read their response,
 as well as handy constants for different status codes. 
 
+## Installation 
+* Deno: just use URL's like in examples 
+* Node: `yarn add node-kall`
+
 ## Basic usage 
 ```ts
+//Deno                //"node-kall" if using Node
 import { get, OK } from "https://denopkg.com/olaven/kall@v0.1.0/mod.ts";
 
-// Basic GET 
+// Basic GET                   //"node-kall" if using Node
 const [status, todo] = await get("https://jsonplaceholder.typicode.com/todos/1");
 
 console.log((status === OK) ?

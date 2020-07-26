@@ -1,0 +1,16 @@
+{
+  "name": "node-kall",
+  "version": "1.0.1",
+  "main": "build/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "deno run --unstable --allow-read --allow-write build.ts",
+    "publish": "yarn build"
+  },
+  "repository": "https://github.com/olaven/kall.git",
+  "author": "olaven <olav@sundfoer.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "sucrase": "^3.15.0"
+  }
+}
