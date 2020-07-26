@@ -1,12 +1,5 @@
-/**
- * Sucrase (Compiling to support Node) expects 
- * a folder as input. I.e. having `mod.ts` as entrypoint 
- * does not work. However, `mod.ts` is the Deno convention. 
- * As a workaround, `./source/index.ts` is the Node entrypoint 
- * (`./dist/index.js` when compiled) and `mod.ts` just forwards everything 
- * exported in `./source/index.ts`.  
- */
-
+export { get, put, patch, del, post } from "./source/methods.ts";
+export { filterStatus, filterBody, filterResponse } from "./source/filters.ts";
 export {
   OK,
   CREATED,
@@ -19,11 +12,6 @@ export {
   CONFLICT,
   INTERNAL_SERVER_ERROR,
   NOT_IMPLEMENTED,
-  get,
-  put,
-  patch,
-  del,
-  post,
   status,
   body,
   response,

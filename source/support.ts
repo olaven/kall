@@ -9,11 +9,14 @@ export const performRequest = async <T>(
   method: Method,
   url: string,
   requestBody: T | null,
+  requestInit: RequestInit,
 ): KallResponse<T> => {
-  const response = await fetch(url, {
+  const finalInit = {
     method,
     body: requestBody ? JSON.stringify(requestBody) : null,
-  });
+    ...requestInit,
+  };
+  const response = await fetch(url, finalInit);
 
   const parsedBody = applicationTypeIsJson(response.headers)
     ? await response.json()

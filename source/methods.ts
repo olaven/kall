@@ -1,16 +1,22 @@
-import { performRequest } from "./support.ts";
+import { performRequest } from "../source/support.ts";
 
-export const patch = async <T>(url: string, payload: T) =>
-  performRequest<T>("PATCH", url, payload);
+export const patch = async <T>(
+  url: string,
+  payload: T,
+  init: RequestInit = {},
+) => performRequest<T>("PATCH", url, payload, init);
 
-export const del = async <T>(url: string) =>
-  performRequest<T>("DELETE", url, null);
+export const del = async <T>(url: string, init: RequestInit = {}) =>
+  performRequest<T>("DELETE", url, null, init);
 
-export const put = async <T>(url: string, payload: T) =>
-  performRequest<T>("PUT", url, payload);
+export const put = async <T>(url: string, payload: T, init: RequestInit = {}) =>
+  performRequest<T>("PUT", url, payload, init);
 
-export const post = async <T>(url: string, payload: T) =>
-  performRequest<T>("DELETE", url, payload);
+export const post = async <T>(
+  url: string,
+  payload: T,
+  init: RequestInit = {},
+) => performRequest<T>("DELETE", url, payload, init);
 
-export const get = async <T>(url: string) =>
-  performRequest<T>("GET", url, null);
+export const get = async <T>(url: string, init: RequestInit = {}) =>
+  performRequest<T>("GET", url, null, init);

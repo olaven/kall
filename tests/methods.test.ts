@@ -1,15 +1,18 @@
-import {
-  assertEquals,
-  assertNotEquals,
-  encode,
-  serve,
-} from "../source/deps.ts";
+import { assertEquals, assertNotEquals, encode, serve } from "../source/deps.ts";
 import { get, post, put, patch, del } from "../source/methods.ts";
+import { filterResponse } from "../source/filters.ts";
 
 const { test } = Deno;
 
 const listenTo = async (mockOptions: MockOptions, server: any) => {
   for await (const req of server) {
+    const receivedHeader = req.headers.get("x-test-header");
+    if (mockOptions.expectTestHeader) {
+      assertNotEquals(receivedHeader, null);
+    } else {
+      assertEquals(receivedHeader, null);
+    }
+
     req.respond(mockOptions);
   }
 };
@@ -18,6 +21,7 @@ type MockOptions = {
   status: number | undefined;
   headers?: Headers;
   body?: any;
+  expectTestHeader?: boolean;
 };
 
 const withServer =
@@ -66,4 +70,21 @@ test(
     const [status, body] = await get(url);
     assertEquals(body, { key: "value" });
   }),
+);
+
+test(
+  "GET forwards RequestInit",
+  withServer(
+    {
+      status: 200,
+      expectTestHeader: true,
+    },
+    async (url) => {
+      await filterResponse(get(url, {
+        headers: {
+          "x-test-header": "header value",
+        },
+      }));
+    },
+  ),
 );
