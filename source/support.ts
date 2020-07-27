@@ -11,12 +11,16 @@ export const performRequest = async <T>(
   requestBody: T | null,
   requestInit: RequestInit,
 ): KallResponse<T> => {
-  const finalInit = {
+
+  const response = await fetch(url, {
     method,
     body: requestBody ? JSON.stringify(requestBody) : null,
+    headers: {
+      "Content-Type": "application/json",
+      ...requestInit.headers
+    },
     ...requestInit,
-  };
-  const response = await fetch(url, finalInit);
+  });
 
   const parsedBody = applicationTypeIsJson(response.headers)
     ? await response.json()
