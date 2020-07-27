@@ -11,10 +11,10 @@ as well as handy constants for different status codes.
 
 ## Basic usage 
 ```ts
-//Deno                //"node-kall" if using Node
+                      //"node-kall" if using Node
 import { get, OK } from "https://denopkg.com/olaven/kall@v0.1.0/mod.ts";
 
-// Basic GET                   //"node-kall" if using Node
+// Basic GET                   
 const [status, todo] = await get("https://jsonplaceholder.typicode.com/todos/1");
 
 console.log((status === OK) ?
@@ -24,6 +24,7 @@ console.log((status === OK) ?
 
 ```
 ```ts
+                      //"node-kall" if using Node
 import { get, OK } from "https://denopkg.com/olaven/kall@v0.1.0/mod.ts";
 
 // Same as previous example, but with types
