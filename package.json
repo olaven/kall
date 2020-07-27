@@ -6,7 +6,7 @@
     "build:denocode": "deno run --unstable --allow-read --allow-write build.ts",
     "build:transpile": "babel ./build/index.js --out-file ./build/index.js",
     "build": "yarn build:denocode && yarn build:transpile",
-    "publish": "yarn build"
+    "prepare": "yarn build"
   },
   "repository": "https://github.com/olaven/kall.git",
   "author": "olaven <olav@sundfoer.com>",

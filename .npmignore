@@ -1,6 +1,9 @@
 source 
 .vscode 
 .github 
+.devcontainer
+tests
+.babelrc
 mod.ts
 test.sh
 build.ts
