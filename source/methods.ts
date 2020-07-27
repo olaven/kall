@@ -16,7 +16,7 @@ export const post = async <T>(
   url: string,
   payload: T,
   init: RequestInit = {},
-) => performRequest<T>("DELETE", url, payload, init);
+) => performRequest<T>("POST", url, payload, init);
 
 export const get = async <T>(url: string, init: RequestInit = {}) =>
   performRequest<T>("GET", url, null, init);
