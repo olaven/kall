@@ -16,5 +16,5 @@ jobs:
             uses: denolib/setup-deno@master
             with:
               deno-version: v1.x
-          - name: Run test
-            run: chmod +x test.sh && ./test.sh
+          - name: Run test 
+            run: deno test --allow-net # chmod +x test.sh && ./test.sh
