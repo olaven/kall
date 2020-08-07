@@ -5,6 +5,9 @@ import { create_dir, write_file } from "https://raw.githubusercontent.com/olaven
  * to build something that Node can understand as a library.
  */
 
+
+//TODO: bulid `.d.ts` for node projects: https://github.com/denoland/deno/issues/3385
+
 const [diagnostics, code] = await Deno.bundle("./mod.ts");
 
 if (diagnostics) {
