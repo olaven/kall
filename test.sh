@@ -1,1 +1,1 @@
-deno test --allow-net -Ldebug --allow-write 
+deno test --allow-net 
