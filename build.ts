@@ -1,20 +1,29 @@
-import { create_dir, write_file } from "https://raw.githubusercontent.com/olaven/markblog/master/source/file_io.ts";
+import { create_dir, write_file } from "https://denopkg.com/olaven/dio";
 
 /**
- * The attept here is to use Deno's built in compiler
- * to build something that Node can understand as a library.
+ * Building something wiht the Deno Compiler that Node
+ * understands as a library.
  */
 
-const [diagnostics, code] = await Deno.bundle("./mod.ts");
+const [transpilationError, transpiled] = await Deno.bundle("./mod.ts");
 
-if (diagnostics) {
-
-    console.info("Error building Kall.");
-    console.error("Diagnostics: ", diagnostics);
+/* //FIXME: generates declaration, but it has to be manually cleaned up..
+const [declarationError, declaration] = await Deno.bundle(
+  "./mod.ts",
+  undefined,
+  {
+    declaration: true,
+    emitDeclarationOnly: true,
+    declarationMap: true,
+  }
+);
+ */
+if (transpilationError) {
+  console.info("Error building Kall.");
+  console.error("Transpilation Error: ", transpilationError);
 } else {
+  await create_dir("./build");
+  write_file("./build/index.js", transpiled);
 
-    await create_dir("./build");
-    write_file("./build/index.js", code);
-
-    console.log("Built Kall :-D");
+  console.log("Built Kall :-D");
 }
