@@ -42,12 +42,15 @@ Every function (`get`, `put`, `patch`, `del`, `post`) returns the same format: `
 * `body`: is the JSON-object the API returns (if any) 
 * `response`: is the response `fetch` would have returned, for when you need it
 
+Similarly, the last argument of any function (2nd for `get` and `del`, and 3rd for `put`, `patch` and `post`) takes a `RequestInit`-object, for when you 
+need to pass custom headers etc. 
+
 In addition, `kall` provides utility functions for extracting only one of these, e.g.: 
-| Name      | Example |
-| ----------- | ----------- |
-| `filterStatus`      | `const status = await filterStatus(post('/api/todos', newTodo))`        | 
-| `filterBody`      | `const body = await filterBody(put('/api/todos', updatedTodo))` | 
-| `filterResponse`      | `const response = await filterResponse(get('/api/todos'))`   | 
+| Name             | Example                                                          |
+| ---------------- | ---------------------------------------------------------------- |
+| `filterStatus`   | `const status = await filterStatus(post('/api/todos', newTodo))` |
+| `filterBody`     | `const body = await filterBody(put('/api/todos', updatedTodo))`  |
+| `filterResponse` | `const response = await filterResponse(get('/api/todos'))`       |
 
 
 ## Motivation 
