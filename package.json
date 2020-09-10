@@ -1,6 +1,6 @@
 {
   "name": "node-kall",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "build/index.js",
   "scripts": {
     "build:denocode": "deno run --unstable --allow-read --allow-write build.ts",
@@ -10,7 +10,7 @@
   },
   "repository": "https://github.com/olaven/kall.git",
   "author": "olaven <olav@sundfoer.com>",
-  "license": "MIT",
+  "license": "LGPL-2.1",
   "devDependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.5",
