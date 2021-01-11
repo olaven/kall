@@ -7,7 +7,7 @@ as well as handy constants for different status codes.
 
 # Documentation 
 
-If you or your company is benefitting from `kall`, consider becoming a [sponsor](github.com/sponsors/olaven/). 
+If you or your company is benefitting from `kall`, consider becoming a [sponsor](https://github.com/sponsors/olaven/). 
 This way I can work on new features and continue to maintain it worry-free. 
 ## Installation 
 * Deno: just use URL's like in examples 
