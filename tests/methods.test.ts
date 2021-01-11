@@ -1,5 +1,5 @@
-import { assertEquals, assertNotEquals, encode, serve } from "../source/deps.ts";
-import { get, post, put, patch, del } from "../source/methods.ts";
+import { assertEquals, assertNotEquals, serve } from "../source/deps.ts";
+import { get } from "../source/methods.ts";
 import { filterResponse } from "../source/filters.ts";
 
 const { test } = Deno;

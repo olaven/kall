@@ -5,7 +5,7 @@ export const filterStatus = async (result: KallResponse<any>) => {
   return status;
 };
 
-export const filterBody = async <T>(result: KallResponse<T>) => {
+export const filterBody = async <R>(result: KallResponse<R>) => {
   const [_, body] = await result;
   return body;
 };
