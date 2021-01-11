@@ -1,33 +1,33 @@
-export function get<T>(
+export function get<T, R = T>(
   url: string,
   init?: RequestInit
-): Promise<[number, T, Response]>;
-export function post<T>(
-  url: string,
-  payload: T,
-  init?: RequestInit
-): Promise<[number, T, Response]>;
-export function patch<T>(
+): Promise<[number, R, Response]>;
+export function post<T, R = T>(
   url: string,
   payload: T,
   init?: RequestInit
-): Promise<[number, T, Response]>;
-export function del<T>(
-  url: string,
-  init?: RequestInit
-): Promise<[number, T, Response]>;
-export function put<T>(
+): Promise<[number, R, Response]>;
+export function patch<T, R = T>(
   url: string,
   payload: T,
   init?: RequestInit
-): Promise<[number, T, Response]>;
+): Promise<[number, R, Response]>;
+export function del<T, R = T>(
+  url: string,
+  init?: RequestInit
+): Promise<[number, R, Response]>;
+export function put<T, R = T>(
+  url: string,
+  payload: T,
+  init?: RequestInit
+): Promise<[number, R, Response]>;
 
 export function filterStatus(
   caller: Promise<[number, any, Response]>
 ): Promise<number>;
-export function filterBody<T>(
-  caller: Promise<[number, T | null, Response]>
-): Promise<T>;
+export function filterBody<R>(
+  caller: Promise<[number, R | null, Response]>
+): Promise<R>;
 export function filterResponse(
   caller: Promise<[number, any, Response]>
 ): Promise<Response>;

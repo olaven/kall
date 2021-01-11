@@ -3,14 +3,14 @@ const applicationTypeIsJson = (headers: Headers) =>
   headers.get("Content-Type")?.toLowerCase().includes("application/json");
 
 type Method = "GET" | "PUT" | "PATCH" | "DELETE" | "POST";
-export type KallResponse<T> = Promise<[number, T | null, Response]>;
+export type KallResponse<R> = Promise<[number, R | null, Response]>;
 
-export const performRequest = async <T>(
+export const performRequest = async <T, R>(
   method: Method,
   url: string,
   requestBody: T | null,
   requestInit: RequestInit,
-): KallResponse<T> => {
+): KallResponse<R> => {
 
   const response = await fetch(url, {
     method,
@@ -23,7 +23,7 @@ export const performRequest = async <T>(
   });
 
   const parsedBody = applicationTypeIsJson(response.headers)
-    ? await response.json()
+    ? await response.json() as R
     : null;
 
   return [response.status, parsedBody, response];
