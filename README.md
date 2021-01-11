@@ -5,9 +5,14 @@ A small and intuitive wrapper around `fetch` for consuming REST+JSON-APIs.
 It provides functions for each HTTP Method and an easy API to read their response,
 as well as handy constants for different status codes. 
 
+# Documentation 
+
+If you or your company is benefitting from Markblog, consider becoming a [sponsor](github.com/sponsors/olaven/). 
+This way I can work on new features and continue to maintain it worry-free. 
 ## Installation 
 * Deno: just use URL's like in examples 
 * Node: `yarn add node-kall`
+
 
 ## Basic usage 
 ```ts
