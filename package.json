@@ -9,7 +9,11 @@
     "prepare": "yarn build"
   },
   "repository": "https://github.com/olaven/kall.git",
-  "author": "olaven <olav@sundfoer.com>",
+  "author": {
+    "name": "Olav Sundfør", 
+    "email": "olav@sundfoer.com", 
+    "url": "https://olaven.org"
+  },
   "license": "LGPL-2.1",
   "devDependencies": {
     "@babel/cli": "^7.10.5",
