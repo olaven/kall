@@ -17,7 +17,7 @@ This way I can work on new features and continue to maintain it worry-free.
 ## Basic usage 
 ```ts
                       //"node-kall" if using Node
-import { get, OK } from "https://denopkg.com/olaven/kall@v0.1.71/mod.ts";
+import { get, OK } from "https://denopkg.com/olaven/kall@v1.0.8/mod.ts";
 
 // Basic GET                   
 const [status, todo] = await get("https://jsonplaceholder.typicode.com/todos/1");
@@ -30,7 +30,7 @@ console.log((status === OK) ?
 ```
 ```ts
                       //"node-kall" if using Node
-import { get, OK } from "https://denopkg.com/olaven/kall@v0.1.71/mod.ts";
+import { get, OK } from "https://denopkg.com/olaven/kall@v1.0.8/mod.ts";
 
 // Same as previous example, but with types
 type Todo = { userId: number, id: number, title: string, completed: boolean }; //define the type the server is expected to return 
