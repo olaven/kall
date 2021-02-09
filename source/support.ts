@@ -5,6 +5,13 @@ const applicationTypeIsJson = (headers: Headers) =>
 type Method = "GET" | "PUT" | "PATCH" | "DELETE" | "POST";
 export type KallResponse<R> = Promise<[number, R | null, Response]>;
 
+
+const supportedFetch =
+  (typeof (window) !== 'undefined' || typeof (Deno) !== 'undefined') ?
+    fetch :
+    //@ts-ignore
+    require("node-fetch");
+
 export const performRequest = async <T, R>(
   method: Method,
   url: string,
@@ -12,7 +19,7 @@ export const performRequest = async <T, R>(
   requestInit: RequestInit,
 ): KallResponse<R> => {
 
-  const response = await fetch(url, {
+  const response = await supportedFetch(url, {
     method,
     body: requestBody ? JSON.stringify(requestBody) : null,
     headers: {
