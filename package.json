@@ -1,6 +1,6 @@
 {
   "name": "node-kall",
-  "version": "1.0.71",
+  "version": "1.0.8",
   "main": "build/index.js",
   "scripts": {
     "build:denocode": "deno run --unstable --allow-read --allow-write build.ts",
