@@ -1,19 +1,16 @@
 name: Test
 
 on:
-    push:
-    schedule: 
-      - cron: '* 12 * * *'
-
+  push:
 
 jobs:
-    deploy:
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@master
-          - name: Setup deno
-            uses: denolib/setup-deno@master
-            with:
-              deno-version: v1.x
-          - name: Run test 
-            run: chmod +x test.sh && ./test.sh
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup deno
+        uses: denolib/setup-deno@master
+        with:
+          deno-version: v1.x
+      - name: Run test
+        run: chmod +x test.sh && ./test.sh
