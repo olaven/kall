@@ -3,7 +3,7 @@
   "version": "1.0.82",
   "main": "build/index.js",
   "scripts": {
-    "build:denocode": "deno run --unstable --allow-read --allow-write build.ts",
+    "build:denocode": "deno bundle mod.ts > ./build/index.js",
     "build:transpile": "babel ./build/index.js --out-file ./build/index.js",
     "build": "yarn build:denocode && yarn build:transpile",
     "prepare": "yarn build"
