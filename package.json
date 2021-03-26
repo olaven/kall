@@ -1,6 +1,6 @@
 {
   "name": "node-kall",
-  "version": "1.0.82",
+  "version": "1.0.83",
   "main": "build/index.js",
   "scripts": {
     "build:denocode": "deno bundle mod.ts > ./build/index.js",
