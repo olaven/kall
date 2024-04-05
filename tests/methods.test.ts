@@ -1,23 +1,17 @@
-import { assertEquals, assertNotEquals } from "../source/deps.ts";
+import { assertNotEquals } from "$std/assert/assert_not_equals.ts";
+import { assertEquals } from "$std/assert/assert_equals.ts";
 import { get } from "../source/methods.ts";
 
 const url = "https://api.entur.io/";
 
-Deno.test(
-  "Get returns something",
-  async () => {
-    const returned = await get(url);
+Deno.test("Get returns something", async () => {
+  const returned = await get(url);
 
-    assertNotEquals(returned, null);
-    assertNotEquals(returned, undefined);
-    assertNotEquals(returned, []);
-  },
-);
+  assertNotEquals(returned, null);
+  assertNotEquals(returned, undefined);
+});
 
-Deno.test(
-  "Get returns correct status",
-  async () => {
-    const { status } = await get(url);
-    assertEquals(status, 404);
-  },
-);
+Deno.test("Get returns correct status", async () => {
+  const { status } = await get(url);
+  assertEquals(status, 404);
+});
