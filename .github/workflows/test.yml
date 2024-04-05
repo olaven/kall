@@ -12,5 +12,7 @@ jobs:
         uses: denolib/setup-deno@master
         with:
           deno-version: v1.x
+      - name: Run checks
+        run: deno task check
       - name: Run test
         run: deno task test
