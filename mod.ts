@@ -1,2 +1,2 @@
-export { del, get, patch, post, put } from "./source/methods.ts";
-export { STATUS_CODE } from "./source/codes.ts";
+export { del, get, patch, post, put } from "./src/methods.ts";
+export { STATUS_CODE } from "./src/codes.ts";

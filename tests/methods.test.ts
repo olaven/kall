@@ -1,6 +1,6 @@
 import { assertNotEquals } from "$std/assert/assert_not_equals.ts";
 import { assertEquals } from "$std/assert/assert_equals.ts";
-import { get } from "../source/methods.ts";
+import { get } from "../src/methods.ts";
 
 const url = "https://api.entur.io/";
 

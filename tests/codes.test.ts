@@ -1,4 +1,4 @@
-import { STATUS_CODE } from "../source/codes.ts";
+import { STATUS_CODE } from "../src/codes.ts";
 import { assertEquals } from "$std/assert/assert_equals.ts";
 
 Deno.test("Some random codes", () => {

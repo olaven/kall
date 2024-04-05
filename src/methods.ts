@@ -1,4 +1,4 @@
-import { performRequest } from "../source/support.ts";
+import { performRequest } from "../src/support.ts";
 
 export const patch = <T, G = T>(
   url: string,
