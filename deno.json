@@ -2,15 +2,20 @@
   "lock": false,
   "name": "kall",
   "source": "https://github.com/olaven/kall",
-  "author": " Olav Sundfør <olav@sundfoer.com>",
+  "author": "Olav Sundfør <olav@sundfoer.com>",
   "tasks": {
     "test": "deno test --allow-net",
     "check": "deno fmt --check && deno lint && deno check **/*.ts"
   },
   "fmt": {
+    "exclude": [
+      "**/*.md",
+      "**/*.json"
+    ],
     "useTabs": false,
     "lineWidth": 80,
     "indentWidth": 2,
+    "singleQuote": false,
     "proseWrap": "preserve"
   },
   "lint": {
@@ -19,5 +24,9 @@
         "recommended"
       ]
     }
-  }
+  },
+  "exclude": [
+    ".vscode/",
+    ".devcontainer"
+  ]
 }
