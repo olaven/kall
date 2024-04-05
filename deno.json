@@ -4,7 +4,8 @@
   "source": "https://github.com/olaven/kall",
   "author": " Olav Sundfør <olav@sundfoer.com>",
   "tasks": {
-    "test": "deno test --allow-net"
+    "test": "deno test --allow-net",
+    "check": "deno fmt --check && deno lint && deno check **/*.ts"
   },
   "fmt": {
     "useTabs": false,
