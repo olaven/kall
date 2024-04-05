@@ -1,3 +1,7 @@
+/**
+ * HTTP response status codes.
+ * More details on [MDN Web docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).
+ */
 export const STATUS_CODE = {
   CONTINUE: 100,
   SWITCHING_PROTOCOL: 101,
