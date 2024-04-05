@@ -7,6 +7,9 @@
     "test": "deno test --allow-net",
     "check": "deno fmt --check && deno lint && deno check **/*.ts"
   },
+  "imports": {
+    "$std/": "https://deno.land/std@0.86.0/"
+  },
   "fmt": {
     "exclude": [
       "**/*.md",
