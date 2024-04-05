@@ -9,7 +9,8 @@ export type KallResponse<R> = Promise<
   { status: EnumValues<typeof STATUS_CODE>; body: R | null; response: Response }
 >;
 
-const supportedFetch =
+type Fetch = typeof fetch;
+const supportedFetch: Fetch =
   (typeof window !== "undefined" || typeof Deno !== "undefined")
     ? fetch // @ts-ignore To make compatiable with Node.js
     : require("node-fetch");
