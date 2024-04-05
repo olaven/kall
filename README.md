@@ -20,7 +20,10 @@ This way I can work on new features and continue to maintain it worry-free.
 
 ```ts
 //"node-kall" if using Node
-import { get, OK } from "https://denopkg.com/olaven/kall@v1.0.8/mod.ts";
+import {
+  get,
+  STATUS_CODE,
+} from "https://denopkg.com/olaven/kall@v1.0.8/mod.ts";
 
 // Basic GET
 const { status, todo } = await get(
@@ -28,13 +31,18 @@ const { status, todo } = await get(
 );
 
 console.log(
-  status === OK ? `Fetched Todo: ${todo}` : `${status} when fetching todo..`,
+  status === STATUS_CODE.OK
+    ? `Fetched Todo: ${todo}`
+    : `${status} when fetching todo..`,
 );
 ```
 
 ```ts
 //"node-kall" if using Node
-import { get, OK } from "https://denopkg.com/olaven/kall@v1.0.8/mod.ts";
+import {
+  get,
+  STATUS_CODE,
+} from "https://denopkg.com/olaven/kall@v1.0.8/mod.ts";
 
 // Same as previous example, but with types
 type Todo = { userId: number; id: number; title: string; completed: boolean }; //define the type the server is expected to return
@@ -43,7 +51,9 @@ const { status, todo } = await get<Todo>(
 ); // pass as generic
 
 console.log(
-  status === OK ? `Fetched Todo: ${todo}` : `${status} when fetching todo..`,
+  status === STATUS_CODE.OK
+    ? `Fetched Todo: ${todo}`
+    : `${status} when fetching todo..`,
 );
 ```
 
