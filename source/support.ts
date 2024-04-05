@@ -1,8 +1,13 @@
+import { STATUS_CODE } from "../mod.ts";
+
 const applicationTypeIsJson = (headers: Headers): boolean =>
   !!headers.get("content-type")?.toLowerCase().includes("application/json");
 
 type Method = "GET" | "PUT" | "PATCH" | "DELETE" | "POST";
-export type KallResponse<R> = Promise<[number, R | null, Response]>;
+type EnumValues<T> = T[keyof T];
+export type KallResponse<R> = Promise<
+  { status: EnumValues<typeof STATUS_CODE>; body: R | null; response: Response }
+>;
 
 const supportedFetch =
   (typeof window !== "undefined" || typeof Deno !== "undefined")
@@ -31,5 +36,5 @@ export const performRequest = async <T, R>(
 
   await response.body?.cancel();
 
-  return [response.status, parsedBody, response];
+  return { status: response.status, body: parsedBody, response };
 };
