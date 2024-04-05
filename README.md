@@ -1,4 +1,7 @@
-# Kall 🦜 ![Test](https://github.com/olaven/kall/workflows/Test/badge.svg)
+[![Latest version](https://deno.land/badge/kall/version)](https://deno.land/x/kall)
+![Test](https://github.com/olaven/kall/workflows/Test/badge.svg)
+
+# Kall 🦜
 
 A small and intuitive wrapper around `fetch` for consuming REST+JSON-APIs.
 `kall` is compatible with [Deno](https://deno.land) and [Node](nodejs.org).
