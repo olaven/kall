@@ -11,7 +11,7 @@ export type KallResponse<R> = Promise<
 
 const supportedFetch =
   (typeof window !== "undefined" || typeof Deno !== "undefined")
-    ? fetch //@ts-ignore
+    ? fetch // @ts-ignore To make compatiable with Node.js
     : require("node-fetch");
 
 export const performRequest = async <T, R>(
