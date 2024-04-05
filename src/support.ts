@@ -6,11 +6,7 @@ const applicationTypeIsJson = (headers: Headers): boolean =>
 type Method = "GET" | "PUT" | "PATCH" | "DELETE" | "POST";
 type EnumValues<T> = T[keyof T];
 export type KallResponse<R> = Promise<
-  {
-    status: EnumValues<typeof STATUS_CODE>;
-    body: R | string;
-    response: Response;
-  }
+  { status: EnumValues<typeof STATUS_CODE>; body: R; response: Response }
 >;
 
 type Fetch = typeof fetch;
@@ -37,7 +33,7 @@ export const performRequest = async <T, R>(
 
   const parsedBody = applicationTypeIsJson(response.headers)
     ? await response.json() as R
-    : await response.text();
+    : await response.text() as R;
 
   return {
     status: response.status as EnumValues<typeof STATUS_CODE>,
