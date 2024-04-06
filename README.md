@@ -9,17 +9,17 @@ A small and intuitive wrapper around `fetch` for consuming REST+JSON-APIs.
 It provides functions for each HTTP Method and an easy API to read their response,
 as well as handy constants for different status codes.
 
-# Documentation
+## Support/sponsor
 
 If you or your company is benefitting from `kall`, consider becoming a [sponsor](https://github.com/sponsors/olaven/).
 This way I can work on new features and continue to maintain it worry-free.
 
-## Installation
+## Getting started
 
 - Deno: just use URL's like in examples
 - Node: `yarn add node-kall`
 
-## Basic usage
+### Basic usage
 
 ```ts
 //"node-kall" if using Node
