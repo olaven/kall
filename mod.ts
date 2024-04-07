@@ -1,65 +1,25 @@
-export { get, put, patch, del, post } from "./source/methods.ts";
-export { filterStatus, filterBody, filterResponse } from "./source/filters.ts";
-export {
-  CONTINUE,
-  SWITCHING_PROTOCOL,
-  PROCESSING,
-  EARLY_HINTS,
-  OK,
-  CREATED,
-  ACCEPTED,
-  NON_AUTHORATIVE_INFORMATION,
-  NO_CONTENT,
-  RESET_CONNECTION,
-  PARTIAL_CONTENT,
-  MULTI_STATUS,
-  ALREADY_REPORTED,
-  IM_USED,
-  MOVED_PERMANENTLY,
-  FOUND,
-  SEE_OTHER,
-  NOT_MODIFIED,
-  TEMPORARY_REDIRECT,
-  PERMANENT_REDIRECT,
-  BAD_REQUEST,
-  UNAUTHORIZED,
-  PAYMENT_REQUIRED,
-  FORBIDDEN,
-  NOT_FOUND,
-  METHOD_NOT_ALLOWED,
-  NOT_ACCEPTABLE,
-  PROXY_AUTHENTICATION_REQUIRED,
-  REQUEST_TIMEOUT,
-  CONFLICT,
-  GONE,
-  LENGTH_REQUIRED,
-  PRECONDITION_FAILED,
-  PAYLOAD_TOO_LARGE,
-  URI_TOO_LONG,
-  UNSUPPORTED_MEDIA_TYPE,
-  RANGE_NOT_SATISFIABLE,
-  EXPECTATION_FAILED,
-  IM_A_TEAPOT,
-  MISDIRECTED_REQUEST,
-  UNPROCESSABLE_ENTITY,
-  LOCKED,
-  FAILED_DEPENDENCY,
-  TOO_EARLY,
-  UPGRADE_REQUIRED,
-  PRECONDITION_REQUIRED,
-  TOO_MAY_REQUESTS,
-  REQUEST_HEADER_FIELDS_TOO_LARGE,
-  UNAVAILABLE_FOR_LEGAL_REASONS,
-  INTERNAL_SERVER_ERROR,
-  NOT_IMPLEMENTED,
-  BAD_GATEWAY,
-  SERVICE_UNAVAILABLE,
-  GATEWAY_TIMEOUT,
-  HTTP_VERSION_NOT_SUPPORTED,
-  VARIANT_ALSO_NEGOTIATES,
-  INSUFFICIENT_STORAGE,
-  LOOP_DETECTED,
-  NOT_EXTENDED,
-  NETWORK_AUTHENTICATION_REQUIRED,
+/**
+ * A small wrapper around `fetch()` for consuming REST+JSON-APIs.
+ *
+ * @example
+ * ```typescript
+ * import {
+ *   get,
+ *   STATUS_CODE,
+ * } from "https://deno.land/x/olaven/kall/mod.ts";
+ *
+ *  * const { status, todo } = await get(
+ *   "https://jsonplaceholder.typicode.com/todos/1",
+ * );
+ *
+ * console.log(
+ *   status === STATUS_CODE.OK
+ *     ? `Fetched Todo: ${todo}`
+ *     : `${status} when fetching todo..`,
+ * );
+ * ```
+ * @module
+ */
 
-} from "./source/codes.ts";
+export { del, get, patch, post, put } from "./src/methods.ts";
+export { STATUS_CODE } from "$std/http/status.ts";

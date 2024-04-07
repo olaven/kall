@@ -1,12 +1,18 @@
+import { STATUS_CODE } from "../mod.ts";
+
 const applicationTypeIsJson = (headers: Headers): boolean =>
   !!headers.get("content-type")?.toLowerCase().includes("application/json");
 
 type Method = "GET" | "PUT" | "PATCH" | "DELETE" | "POST";
-export type KallResponse<R> = Promise<[number, R | null, Response]>;
+type EnumValues<T> = T[keyof T];
+export type KallResponse<R> = Promise<
+  { status: EnumValues<typeof STATUS_CODE>; body: R; response: Response }
+>;
 
-const supportedFetch =
+type Fetch = typeof fetch;
+const supportedFetch: Fetch =
   (typeof window !== "undefined" || typeof Deno !== "undefined")
-    ? fetch //@ts-ignore
+    ? fetch // @ts-ignore To make compatiable with Node.js
     : require("node-fetch");
 
 export const performRequest = async <T, R>(
@@ -27,9 +33,11 @@ export const performRequest = async <T, R>(
 
   const parsedBody = applicationTypeIsJson(response.headers)
     ? await response.json() as R
-    : null;
+    : await response.text() as R;
 
-  await response.body?.cancel();
-
-  return [response.status, parsedBody, response];
+  return {
+    status: response.status as EnumValues<typeof STATUS_CODE>,
+    body: parsedBody,
+    response,
+  };
 };
